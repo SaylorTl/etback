@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>EP停车车辆管理后台</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" href="/static/css/font-awesome.min.css">
+</head>
+<body>
+    <script>
+!(function(c,b,d,a){c[a]||(c[a]={});c[a].config={pid:"e4ooybpsp5@510d9bcc14bfe24",imgUrl:"https://arms-retcode.aliyuncs.com/r.png?",useFmp:true,sendResource:true};
+with(b)with(body)with(insertBefore(createElement("script"),firstChild))setAttribute("crossorigin","",src=d)
+})(window,document,"https://retcode.alicdn.com/retcode/bl.js","__bl");
+</script>
+    <div id="app" v-on:click="globalClick" >
+        <div v-if="rendering" class='spinner'>
+            <div class='bounce1'></div>
+            <div class='bounce2'></div>
+            <div class='bounce3'></div>
+        </div>
+        <div v-if="rendering == false" id='contenter' :class="{'login_bg':!islogin}">
+            <worker-header ref="header" v-if="islogin"></worker-header>
+            <worker-bar ref="bar" v-if="islogin"></worker-bar>
+            <transition name="fade" mode="out-in">
+                <keep-alive>
+                        <router-view v-if="$route.meta.keepAlive" ></router-view>
+                </keep-alive>
+            </transition>
+            <transition name="fade" mode="out-in">
+                <router-view v-if="!$route.meta.keepAlive"></router-view>
+            </transition>
+        </div>
+        <my-loading></my-loading>
+    </div>
+    <script type="text/javascript" src="/config/config.js?v=0.01"></script>
+</body>
+</html>
